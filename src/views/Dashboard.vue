@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <Navbar/>
+  <div class="admin-dashboard">
+    <Navbar />
     <template>
       <div class="breadcrumb">
         <b-breadcrumb>
@@ -21,31 +21,24 @@
       </div>
     </template>
 
-    <h1>Sobre nós</h1>
-    <Footer/>
+    <h1>Painel Administrativo</h1>
   </div>
 </template>
 
 <script>
-// Import Navbar
-import Navbar from './../components/Navbar.vue'
-// Import Footer
-import Footer from './../components/Footer.vue'
+// Import Sidemenu
+import Navbar from "../components/Sidemenu.vue";
+
 export default {
-  name: "About",
-  components: { 
+  name: "Dashboard",
+  components: {
     Navbar,
-    Footer
   },
   data() {
     return {
       breadcrumb_custom_items: [
         {
-          text: "Início",
-          to: "/"
-        },
-        {
-          text: "Sobre nós",
+          text: "Painel Administrativo",
           active: true,
         },
       ],
@@ -55,7 +48,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 </style>
