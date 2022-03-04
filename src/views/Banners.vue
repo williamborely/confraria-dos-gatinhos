@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-dashboard">
+  <div class="banner-painel">
     <Navbar />
     <template>
       <div class="breadcrumb">
@@ -21,23 +21,8 @@
       </div>
     </template>
 
-    <h1>Painel Administrativo</h1>
-    <b-container class="sector sector-dashboard-views">
-      <b-row cols="2" cols-sm="2" cols-md="4" cols-lg="4" cols-xl="4">
-        <b-col xl="3" md="6">
-          <b-card title="Artigos" sub-title="0" class="mb-4 gradient-red"> </b-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <b-card title="Banners" sub-title="0" class="mb-4 gradient-orange"> </b-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <b-card title="Textos" sub-title="0" class="mb-4 gradient-green"> </b-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <b-card title="Usuários" sub-title="1" class="mb-4 gradient-info"> </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <h1>Banners</h1>
+
     <Footer />
   </div>
 </template>
@@ -53,7 +38,7 @@ import axios from "axios";
 import Footer from "../components/Footer.vue";
 
 export default {
-  name: "Dashboard",
+  name: "Articles",
   components: {
     Navbar,
     Footer
@@ -63,6 +48,10 @@ export default {
       breadcrumb_custom_items: [
         {
           text: "Dashboard",
+          to: "/dashboard"
+        },
+        {
+          text: "Banners",
           active: true,
         },
       ],
@@ -97,18 +86,5 @@ export default {
 <style lang="css" scoped>
 a {
   text-decoration: none;
-}
-
-.gradient-red {
-  background: linear-gradient(87deg, #f5365c, #f56036);
-}
-.gradient-orange {
-  background: linear-gradient(87deg, #fb6340, #fbb140);
-}
-.gradient-green {
-  background: linear-gradient(87deg, #2dce89, #2dcecc);
-}
-.gradient-info {
-  background: linear-gradient(87deg, #11cdef, #1171ef);
 }
 </style>

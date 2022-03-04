@@ -29,16 +29,42 @@
         ></b-form-input>
       </div>
 
-        <button @click="onSubmit" class="btn btn- mt-3">Entrar</button>
+      <button v-if="loginLoader === false" @click="onSubmit" class="btn btn- mt-3">
+        Entrar
+      </button>
+      <button v-else @click="onSubmit" class="btn btn- mt-3">
+        <b-spinner small type="grow"></b-spinner>
+        Entrando...
+      </button>
+      <br />
+      <br />
+      <b-alert
+        v-if="loginErroAlert === true"
+        variant="danger"
+        fade
+        :show="loginErroAlert"
+        @dismissed="loginErroAlert = false"
+      >
+        E-mail ou Senha Invalidos!
+      </b-alert>
+      <b-alert
+        v-else
+        variant="danger"
+        fade
+        :show="loginOrPasswordInvalidAlert"
+        @dismissed="loginOrPasswordInvalidAlert = false"
+      >
+        Preencha E-mail e Senha!
+      </b-alert>
     </form>
   </div>
 </template>
 
 <script>
+// Import BcryptJS
 import bcrypt from "bcryptjs";
+// Import Axios
 import axios from "axios";
-
-var url = "http://localhost/crud_vuetify_2020/crud.php";
 
 export default {
   name: "Login",
@@ -50,36 +76,32 @@ export default {
       },
       show: true,
       users: [],
-        dialog: false,
-        operacion: '',
-      user:{
-            id: null,
-            firstName:'',
-            lastName:'',
-            email:'',
-            password:'',
-            recoveryCode:'',
-            isActive:'',
-        }
+      dialog: false,
+      operacion: "",
+      user: {
+        id: null,
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        recoveryCode: "",
+        isActive: "",
+      },
+      loginErroAlert: false,
+      loginOrPasswordInvalidAlert: false,
+      loginLoader: false,
     };
   },
   methods: {
     onSubmit(event) {
+      this.loginLoader = true;
       event.preventDefault();
-      if(this.form.email && this.form.password) {
-
+      if (this.form.email && this.form.password) {
         this.getUser();
-        const getPassword = this.users[0].password;
-        if (bcrypt.compareSync(this.form.password, getPassword)) {
-          /* this.$router.push({ name: "Dashboard" }); */
-          console.log(getPassword + "Logado!");
-        }else {
-          console.log("Senha inválda!");
-        }
-      }else {
-        /* this.onReset(event); */
+      } else {
+        this.loginOrPasswordInvalidAlert = true;
+        this.loginLoader = false;
       }
-
     },
     onReset(event) {
       event.preventDefault();
@@ -92,25 +114,30 @@ export default {
         this.show = true;
       });
     },
-    getUser(){
-      axios.post(url,{opcion:1, email:this.form.email})
-      .then(response =>{
-        this.users = response.data;
-      })
+    getUser() {
+      axios
+        .post(
+          "http://localhost/confraria-dos-gatinhos/src/controllers/V1/User/userController.php",
+          { method: 1, email: this.form.email, isActive: "Active" }
+        )
+        .then((response) => {
+          this.loginLoader = false;
+          if (bcrypt.compareSync(this.form.password, response.data[0].password)) {
+            this.loginLoader = true;
+            /* sessionStorage.setItem('email', this.form.email);
+          sessionStorage.setItem('password', this.form.password); */
+            this.$router.push({ name: "Dashboard" });
+          } else {
+            console.log("Senha inválda!");
+            this.loginErroAlert = true;
+          }
+        });
     },
   },
 };
 </script>
 
-<style>
-html {
-  background-color: #fffee2 !important;
-  overflow: hidden;
-}
-
-#app {
-  background-color: #fffee2 !important;
-}
+<style scoped>
 .wrapper {
   max-width: 350px;
   min-height: 500px;
