@@ -38,7 +38,7 @@ import axios from "axios";
 import Footer from "../components/Footer.vue";
 
 export default {
-  name: "Articles",
+  name: "Banners",
   components: {
     Navbar,
     Footer
