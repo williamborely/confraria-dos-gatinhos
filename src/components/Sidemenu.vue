@@ -17,7 +17,7 @@
             <b-icon-house-door></b-icon-house-door> Início
           </b-nav-item>
           <b-nav-item to="/articles" href="/articles">
-            <b-icon-file-earmark-text></b-icon-file-earmark-text> Artigos
+            <b-icon-file-earmark-richtext></b-icon-file-earmark-richtext> Artigos
           </b-nav-item>
           <b-nav-item to="/banners" href="/banners">
             <b-icon-file-image></b-icon-file-image> Banners
@@ -53,7 +53,7 @@
 
 <script>
 export default {
-name: "Sidemenu",
+  name: "Sidemenu",
   data() {
     return {
       variant: "dark",
