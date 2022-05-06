@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@300;400;800&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #000;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+}
+
+h1,
+h4 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h1 span,
+h4 span {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.text-primary {
+    color: pink !important;
+}
+
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:active:focus {
+    background-color: pink !important;
+    color: #000 !important;
+    box-shadow: none;
+    border-color: pink !important;
+}
+
+.btn-outline-primary,
+.btn-outline-primary svg {
+    border-color: pink !important;
+    stroke: #fff;
+    box-shadow: none;
+}
+
+.btn-outline-primary:hover {
+    background-color: pink !important;
+}
+
+.btn-outline-primary:hover svg {
+    stroke: #000;
+}
+
+.border-primary {
+    border-color: pink !important;
+}
+
+.bg-primary {
+    background-color: pink !important;
+}
+
+.form-control:focus {
+    border-color: pink !important;
+    box-shadow: 0 0 0 .25rem #ffc0cb40 !important;
+}
+
+
+/* Header - NavBar */
+
+.nav-item a {
+    font-weight: 700;
+}
+
+.nav-item.active {
+    background-color: pink;
+}
+
+.nav-item.active a {
+    color: #000 !important;
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 20px;
+    }
+}
+
+.nav-link.d-block.d-lg-none.text-center {
+    padding: 10px;
+    border-radius: 25px;
+}
+
+
+/* Header - NavBar  END */
+
+
+/* Banner */
+
+div.carousel-item img {
+    filter: brightness(0.7);
+}
+
+.carousel-caption {
+    bottom: 16rem;
+}
+
+
+/* Banner END */
+
+#toTopBtn {
+    position: fixed;
+    bottom: 26px;
+    right: 39px;
+    z-index: 98;
+    padding: 5px;
+    background-color: pink;
+    border-color: pink;
+    border-radius: 100px;
+    opacity: 0;
+}
+
+#toTopBtn.show {
+    opacity: 1;
+    display: block;
+}
+
+
+/* Page Navegation */
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: pink;
+    border-color: pink;
+}
+
+.page-link {
+    color: pink !important;
+}
+
+.page-link:focus {
+    box-shadow: 0 0 0 .25rem rgba(255, 192, 203, 0.42) !important;
+}
+
+.page-item.active a.page-link {
+    color: #000 !important;
+}
+
+
+/* Page Navegation END */
